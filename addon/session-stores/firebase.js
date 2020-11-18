@@ -8,7 +8,7 @@ export default class FirebaseStore extends LocalStorageStore {
   }
 
   restore(...args) {
-    if (this.fastboot?.isFastBoot) {
+    if (this.fastboot && this.fastboot.isFastBoot) {
       if (this.fastboot.request.headers.get('Authorization')?.startsWith('Bearer ')) {
         return Promise.resolve({
           authenticated: { authenticator: 'authenticator:firebase' },
